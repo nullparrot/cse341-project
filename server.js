@@ -3,14 +3,14 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 const router = require("./routes/");
-const usersRouter = require("./routes/users");
+const contactsRouter = require("./routes/contacts");
 const port = process.env.PORT;
 const mongodb = require('./db/connect');
 
 //Routes
 app.get("/", router);
 
-app.use("/users", usersRouter);
+app.use("/contacts", contactsRouter);
 
 
 //Get Everything Running
