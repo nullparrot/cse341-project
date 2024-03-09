@@ -1,0 +1,147 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CSE 341 - Contacts Project",
+    "description": "Simple Contacts Web Service",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/contacts/{id}": {
+      "get": {
+        "description": "Get individual contact info by ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success getting contact info."
+          }
+        }
+      },
+      "put": {
+        "description": "Modify an individual contact by ID. Requires all parameters to be populated.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "Hank"
+                },
+                "lastName": {
+                  "example": "Gristle"
+                },
+                "email": {
+                  "example": "granky@gmail.com"
+                },
+                "favoriteColor": {
+                  "example": "Red"
+                },
+                "birthday": {
+                  "example": "1932-09-21T00:00:00.000Z"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Seccess Editing Contact"
+          },
+          "500": {
+            "description": "Internal Server Error - Unable to Modify Contact"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete contact by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Seccessfully Deleted Contact"
+          },
+          "500": {
+            "description": "Internal Server Error - Unable to Delete Contact"
+          }
+        }
+      }
+    },
+    "/contacts/": {
+      "post": {
+        "description": "Get ALL Contacts",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "Hank"
+                },
+                "lastName": {
+                  "example": "Gristle"
+                },
+                "email": {
+                  "example": "granky@gmail.com"
+                },
+                "favoriteColor": {
+                  "example": "Red"
+                },
+                "birthday": {
+                  "example": "1932-09-21T00:00:00.000Z"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
